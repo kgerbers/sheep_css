@@ -1,0 +1,100 @@
+$head-color: #2f1501;
+$eye-color: #dadada;
+$tilt-head: 45deg;
+$debug-border: 0px dashed #dcd7d7;
+$canvas-width: 400px;
+
+body {
+  background: url('background.jpg') no-repeat;
+  background-size: cover;
+}
+
+.sheep {
+  position: absolute;
+  bottom: 0;
+  right: calc(50% - #{$canvas-width});
+  width: $canvas-width;
+  margin: auto;
+  border: $debug-border;
+
+  .head {
+    position: absolute;
+    border: $debug-border;
+    fill: $head-color;
+    animation: turn_head 5s infinite;
+
+    // display: none !important;
+
+    &:hover {
+      // transform: rotate($tilt-head);
+    }
+
+    @keyframes turn_head {
+      0% {
+        transform: rotate(0);
+      }
+      25% {
+        transform: rotate($tilt-head);
+      }
+      50% {
+        transform: rotate(0);
+      }
+      75% {
+        transform: rotate(-45deg);
+      }
+      100% {
+        transform: rotate(0);
+      }
+    }
+
+    .base {
+      width: 300px;
+      transform: rotate(180deg);
+    }
+
+    .ears {
+      position: absolute;
+      top: 85px;
+      width: 80px;
+
+      &.ear-left {
+        transform: rotate(50deg);
+        left: 75px;
+      }
+
+      &.ear-right {
+        transform: rotate(150deg);
+        left: 145px;
+      }
+    }
+
+    .eyes {
+      position: absolute;
+      width: 10px;
+      margin-top: 145px;
+      fill: $eye-color;
+
+      &.eye-left {
+        left: 140px;
+      }
+
+      &.eye-right {
+        left: 160px;
+      }
+    }
+  }
+
+  .body {
+    .part {
+      //position: absolute;
+      float: left;
+      fill: white;
+      stroke: #fdfdfd;
+
+      .leg {
+        stroke: $head-color;
+        fill: $head-color
+      }
+    }
+  }
+}
